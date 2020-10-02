@@ -3,6 +3,7 @@
 // 
 // This program detects how far something is
 // 
+let strip: neopixel.Strip = null
 let distance = 0
 basic.showIcon(IconNames.Yes)
 basic.forever(function () {
@@ -13,4 +14,6 @@ basic.forever(function () {
     )
     basic.showString("" + (distance))
     basic.pause(500)
+    strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
+    strip.setPixelColor(2, neopixel.colors(NeoPixelColors.Red))
 })
