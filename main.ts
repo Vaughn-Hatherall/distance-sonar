@@ -6,15 +6,37 @@ basic.forever(function () {
         basic.pause(1000)
         robotbit.MotorStop(robotbit.Motors.M2B)
     }
+    if (distance < 24) {
+        robotbit.MotorStop(robotbit.Motors.M2B)
+    }
+    if (distance == 2) {
+        robotbit.MotorRun(robotbit.Motors.M2B, -66)
+        basic.pause(1000)
+        robotbit.MotorStop(robotbit.Motors.M2B)
+    }
+    if (distance == 1) {
+        robotbit.MotorRun(robotbit.Motors.M2B, -62)
+        basic.pause(1000)
+        robotbit.MotorStop(robotbit.Motors.M2B)
+    }
+    if (distance == 0) {
+        robotbit.MotorRun(robotbit.Motors.M2B, -66)
+        basic.pause(1000)
+        robotbit.MotorStop(robotbit.Motors.M2B)
+    }
 })
 basic.forever(function () {
+    basic.showString("" + (distance))
     distance = sonar.ping(
     DigitalPin.P1,
     DigitalPin.P2,
     PingUnit.Inches
     )
-    basic.showString("" + (distance))
-    basic.pause(200)
+    if (distance > 0) {
+        strip = neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB)
+        strip.clear()
+        strip.show()
+    }
     if (distance > 2) {
         strip = neopixel.create(DigitalPin.P15, 24, NeoPixelMode.RGB)
         strip.setPixelColor(0, neopixel.colors(NeoPixelColors.Blue))
@@ -231,18 +253,6 @@ basic.forever(function () {
         strip.setPixelColor(24, neopixel.colors(NeoPixelColors.Blue))
         strip.show()
     }
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
 })
 basic.forever(function () {
 	
