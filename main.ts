@@ -1,17 +1,11 @@
 let distance = 0
 let strip: neopixel.Strip = null
-input.onButtonPressed(Button.A, function () {
-    robotbit.MotorRun(robotbit.Motors.M1A, -132)
-})
 basic.forever(function () {
     if (distance > 24) {
         robotbit.MotorRun(robotbit.Motors.M2B, 78)
         basic.pause(1000)
         robotbit.MotorStop(robotbit.Motors.M2B)
     }
-})
-basic.forever(function () {
-	
 })
 basic.forever(function () {
     distance = sonar.ping(
